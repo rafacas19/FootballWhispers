@@ -1,0 +1,42 @@
+<!--
+  Generated template for the SearchMenu page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Search Menu</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="menu-content">
+  <ion-list>
+
+    <ion-item>
+      <ion-label color="primary">Player</ion-label>
+      <ion-input placeholder="Player Name or Account"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label class="logic_one" style="text-align:center;"> AND </ion-label>
+      <ion-toggle [(ngModel)]="logic_one_toggle" class="logic_one_toggle"></ion-toggle>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label color="primary">Team</ion-label>
+      <ion-input placeholder="Team Name or Account"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary">User</ion-label>
+      <ion-input placeholder="Username"></ion-input>
+    </ion-item>
+
+    <button ion-button block>Search</button>
+    <button ion-button block color="danger">Cancel</button>
+
+  </ion-list>
+</ion-content>
