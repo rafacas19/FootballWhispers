@@ -12,31 +12,30 @@
 
 
 <ion-content class="menu-content">
-  <ion-list>
+  <form (ngSubmit)="getTweets(f.value)" #f="ngForm">
 
     <ion-item>
       <ion-label color="primary">Player</ion-label>
-      <ion-input placeholder="Player Name or Account"></ion-input>
+      <ion-input name="player" placeholder="Player Name or Account" ngModel></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label class="logic_one" style="text-align:center;"> AND </ion-label>
-      <ion-toggle [(ngModel)]="logic_one_toggle" class="logic_one_toggle"></ion-toggle>
+      <ion-toggle class="logic_one_toggle"></ion-toggle>
     </ion-item>
 
 
     <ion-item>
       <ion-label color="primary">Team</ion-label>
-      <ion-input placeholder="Team Name or Account"></ion-input>
+      <ion-input name="team" placeholder="Team Name or Account" ngModel></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label color="primary">User</ion-label>
-      <ion-input placeholder="Username"></ion-input>
+      <ion-input name="user" placeholder="Username" ngModel></ion-input>
     </ion-item>
 
-    <button ion-button block>Search</button>
-    <button ion-button block color="danger">Cancel</button>
-
-  </ion-list>
+    <button ion-button block type="submit">Search</button>
+  </form>
+  <button ion-button block color="danger" (click)="close()">Cancel</button>
 </ion-content>

@@ -3,9 +3,15 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { TweetService } from './services/tweets.service';
+import { HttpModule } from '@angular/http';
+
 import { HomePage } from '../pages/home/home';
+import { SearchMenu } from '../pages/search-menu/search-menu';
+
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers: [TweetService, HttpModule]
 })
 export class MyApp {
   rootPage:any = HomePage;
@@ -19,4 +25,3 @@ export class MyApp {
     });
   }
 }
-

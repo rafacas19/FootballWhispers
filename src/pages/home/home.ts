@@ -13,6 +13,10 @@ export class HomePage {
 
   }
 
+  getPost(query) {
+    return
+  }
+
   openSearchBar(myEvent) {
     let popover = this.popoverController.create(SearchMenu)
 

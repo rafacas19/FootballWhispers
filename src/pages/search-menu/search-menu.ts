@@ -1,29 +1,26 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { TweetService } from '../../app/services/tweets.service'
+// import { Http } from '@angular/http';
 
-/**
- * Generated class for the SearchMenu page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-@IonicPage()
 @Component({
   selector: 'page-search-menu',
   templateUrl: 'search-menu.html',
+  providers: [TweetService]
 })
 export class SearchMenu {
+  tweets: any;
+  constructor(public viewCtrl: ViewController, private tweetService: TweetService) {
 
-  constructor(public viewCtrl: ViewController) {
-    
   }
 
   close() {
     this.viewCtrl.dismiss();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SearchMenu');
+  getTweets(value: {player: string, team: string, user: string}) {
+    console.log(value.player)
+    console.log(this.tweetService.getPosts(value.player, value.team, value.user))
   }
 
 }
