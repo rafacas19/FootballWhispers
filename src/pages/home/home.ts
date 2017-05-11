@@ -20,12 +20,12 @@ export class HomePage {
 
 
   ngOnInit() {
-    // this.getReq();
+    this.initialReq();
   }
 
-  getReq() {
+  initialReq() {
     this.tweetService.getMain().then(response => {
-      console.log(response.title);
+      // console.log(response.title);
       // console.log(response.body);
       this.tweets = response.tweets;
       this.title = response.title;
@@ -41,7 +41,7 @@ export class HomePage {
       ev: myEvent
     })
     popover.onDidDismiss((data) => {
-      console.log(data);
+      // console.log(data);
       this.tweets = data.tweets;
       this.title = data.title;
       this.message = data.message;
