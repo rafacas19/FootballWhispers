@@ -24,17 +24,15 @@ export class SearchMenu {
   }
 
   getTweets(value: {player: string, team: string, user: string}) {
-    console.log(value.player)
-    // console.log(this.tweetService.getPosts(value.player, value.team, value.user))
-    this.tweetService.getMain().then(response => {
-      console.log(response.title);
-      // console.log(response.body);
-
-      this.tweets = response.tweets;
-      this.title = response.title;
-      this.message = response.message;
-      this.viewCtrl.dismiss({"tweets":this.tweets, "title":this.title, "message":this.message});
-    });
+    this.tweetService.getPosts(value.player, value.team, value.user, "query_all");
+    // console.log(value.player)
+    // // console.log(this.tweetService.getPosts(value.player, value.team, value.user))
+    // this.tweetService.getMain().then(response => {
+    //   this.tweets = response.tweets;
+    //   this.title = response.title;
+    //   this.message = response.message;
+    //   this.viewCtrl.dismiss({"tweets":this.tweets, "title":this.title, "message":this.message});
+    // });
   }
 
 }
