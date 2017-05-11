@@ -7,12 +7,35 @@ import 'rxjs/Rx';
   providers: [Http]
 })
 export class TweetService{
+  data:any;
   http:any;
   baseUrl: string;
 
   constructor(http:Http) {
     this.http = http;
-    this.baseUrl = "http://localhost:3000/"
+    this.baseUrl = "http://localhost:3000"
+  }
+
+  getMain() {
+    console.log('Making GET request');
+    // var req = {
+    //   method: 'GET',
+    //   url: "http://localhost:3000"
+    // };
+    if (this.data) {
+      return Promise.resolve(this.data);
+    }
+
+    return new Promise(resolve => {
+      this.http.get('http://localhost:3000')
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+
+    // return this.http.get('http://localhost:3000');
   }
 
   getPosts(player: string, team: string, user: string) {
