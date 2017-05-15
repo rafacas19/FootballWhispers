@@ -12,6 +12,7 @@ export class SearchMenu {
   tweets:any;
   title:any;
   message:any;
+  playerInfo:any;
 
   constructor(public viewCtrl: ViewController, private tweetService: TweetService, private params:NavParams) {
     this.tweets = params.data.twets;
@@ -26,8 +27,9 @@ export class SearchMenu {
   getTweets(value: {player: string, team: string, user: string}) {
     this.tweetService.getPosts(value.player, value.team, value.user, "query_all")
       .then(response => {
-        console.log(response["tweets"]);
+        console.log(response);
           this.tweets = response["tweets"];
+          this.playerInfo = response["playerInfo"]
           this.title = response["title"];
           this.message = response["message"];
           this.viewCtrl.dismiss({"tweets":this.tweets, "title":this.title, "message":this.message});
@@ -40,6 +42,7 @@ export class SearchMenu {
     // // console.log(this.tweetService.getPosts(value.player, value.team, value.user))
     this.tweetService.getMain().then(response => {
       this.tweets = response.tweets;
+      this.playerInfo = response.playerInfo;
       this.title = response.title;
       this.message = response.message;
       this.viewCtrl.dismiss({"tweets":this.tweets, "title":this.title, "message":this.message});
