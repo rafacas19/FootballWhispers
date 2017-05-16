@@ -61,7 +61,7 @@ export class HomePage {
       this.labels = data.labels;
       this.values = this.values;
 
-      this.lineChart = new Chart(this.lineCanvas.nativeElement, {
+      /*this.lineChart = new Chart(this.lineCanvas.nativeElement, {
 
         type: 'line',
         data: {
@@ -81,7 +81,7 @@ export class HomePage {
           }]
         }
         }
-      });
+      }); */
 
 
       if(this.tweets.length > 0 ){
