@@ -32,7 +32,7 @@ export class SearchMenu {
   getTweets(value: {player: string, team: string, user: string}) {
     console.log(this.optional1);
     console.log(this.optional2);
-    this.tweetService.getPosts(value.player, value.team, value.user, "query_all", this.optional1, this.optional2)
+    this.tweetService.getPosts(this.trimInput(value.player), this.trimInput(value.team), this.trimInput(value.user), "query_all", this.optional1, this.optional2)
       .then(response => {
         console.log(response["player_info"].birth_date);
           this.tweets = response["tweets"];
@@ -65,6 +65,10 @@ export class SearchMenu {
 
   changeSelect2(logic2) {
     this.optional2 = logic2;
+  }
+
+  trimInput(value) {
+    return value.replace(/\s/g," OR ");
   }
 
 
