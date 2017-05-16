@@ -49,7 +49,7 @@ export class TweetService{
                  "optional1=" + optional1  + "&" +
                  "optional2=" + optional2;
 
-   return new Promise (resolve =>{
+   return new Promise (resolve => {
      this.http.post(this.baseUrl, parameters, options)
        .map(res => res.json())
        .subscribe(data => {

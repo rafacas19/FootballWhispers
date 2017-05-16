@@ -9,16 +9,90 @@
       </button>
     </ion-buttons>
   </ion-navbar>
+
+  <ion-toolbar no-border-top>
+   <ion-segment [(ngModel)]="info">
+     <ion-segment-button value="tweets">
+       Tweets
+     </ion-segment-button>
+     <ion-segment-button value="graph">
+       Graph
+     </ion-segment-button>
+     <ion-segment-button value="player">
+       Player Info
+     </ion-segment-button>
+   </ion-segment>
+ </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Request Try</h3>
-  <h4>{{title}}</h4>
-  <h5>{{message}}</h5>
-  <ion-list>
-    <ion-item *ngFor="let tweet of tweets">
-      <p>{{tweet.user}}</p>
-    </ion-item>
-  </ion-list>
+  <div [ngSwitch]="info">
+    <div *ngSwitchCase="'tweets'">
+      <div *ngIf="tweetsAvailable">
+        <ion-card *ngFor="let tweet of tweets">
+          <!-- <div padding> -->
 
+          <ion-card-content>
+            <h1>{{tweet.player}}</h1>
+            <h2>{{tweet.user}}</h2>
+            <p> {{tweet.text}}</p>
+          </ion-card-content>
+          <!-- </div> -->
+
+          <ion-row>
+            <ion-col>
+              <button ion-button icon-left clear small>
+                <ion-icon name="ios-undo"></ion-icon>
+                <div>12 replies</div>
+              </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-left clear small>
+                <ion-icon name="ios-repeat"></ion-icon>
+                <div>4 retweets</div>
+              </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-left clear small>
+                <ion-icon name="ios-heart"></ion-icon>
+                <div>2 favorites</div>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </div>
+      <div *ngIf="!tweetsAvailable">
+        <h1>{{message}}</h1>
+      </div>
+    </div>
+
+
+
+    <div *ngSwitchCase="'graph'">
+      <div *ngIf="tweetsAvailable">
+        <h3>Request Try</h3>
+        <h4>Graph Goes Here</h4>
+      </div>
+      <div *ngIf="!tweetsAvailable">
+        <h2>No Graph Available</h2>
+      </div>
+
+    </div>
+
+    <div *ngSwitchCase="'player'">
+      <div *ngIf="tweetsAvailable">
+        <h1>{{player.name}}</h1>
+        <h3>Club: {{player.club}}</h3>
+        <h3>Place of Birth: {{player.birth_place}}</h3>
+        <h3>Date of Birth: {{player.birth_date}}</h3>
+        <h3>Position: {{player.position}}</h3>
+        <h3>Description: </h3>
+        <p>{{player.description}}</p>
+      </div>
+      <div *ngIf="!tweetsAvailable">
+        <h2>{{message}}</h2>
+      </div>
+
+    </div>
+  </div>
 </ion-content>
