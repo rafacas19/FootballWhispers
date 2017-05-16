@@ -33,7 +33,7 @@ export class TweetService{
 
   }
 
-  getPosts(player: string, team: string, user: string, querySelector: string) {
+  getPosts(player: string, team: string, user: string, querySelector: string, optional1: string, optional2: string) {
     console.log("Making POST request")
 
     var myHeaders = new Headers();
@@ -45,7 +45,9 @@ export class TweetService{
     var parameters = "player_input=" + player + "&" +
                  "team_input=" + team + "&" +
                  "user_input=" + user + "&" +
-                 "querySelector=" + querySelector;
+                 "querySelector=" + querySelector + "&" +
+                 "optional1=" + optional1  + "&" +
+                 "optional2=" + optional2;
 
    return new Promise (resolve =>{
      this.http.post(this.baseUrl, parameters, options)

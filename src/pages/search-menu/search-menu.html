@@ -1,3 +1,4 @@
+HTML
 <!--
   Generated template for the SearchMenu page.
 
@@ -22,8 +23,8 @@
 
     <ion-item>
       <ion-label color="primary">Search Type</ion-label>
-      <ion-select>
-        <ion-option value="and">AND</ion-option>
+      <ion-select [(ngModel)]="logic1"  (ionChange)="changeSelect(logic1)" name="logic1">
+        <ion-option value="and" selected="true">AND</ion-option>
         <ion-option value="or">OR</ion-option>
       </ion-select>
     </ion-item>
@@ -32,6 +33,14 @@
     <ion-item>
       <ion-label color="primary">Team</ion-label>
       <ion-input name="team" placeholder="Team Name or Account" ngModel></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary">Search Type</ion-label>
+      <ion-select [(ngModel)]="logic2"  (ionChange)="changeSelect2(logic2)" name="logic2">
+        <ion-option value="and" selected="true">AND</ion-option>
+        <ion-option value="or">OR</ion-option>
+      </ion-select>
     </ion-item>
 
     <ion-item>
