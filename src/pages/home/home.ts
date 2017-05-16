@@ -1,19 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { PopoverController } from 'ionic-angular';
 import { SearchMenu } from '../search-menu/search-menu';
 import { TweetService } from '../../app/services/tweets.service';
+import { Chart } from 'chart.js';
+
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+
+  @ViewChild('lineCanvas') lineCanvas;
+
   tweetsAvailable:boolean;
   tweets:any;
   title:any;
   message:any;
   player:any;
+  lineChart:any;
+  chartData:any;
+  labels:any;
+  values:any;
 
   constructor(public navCtrl: NavController, public popoverController: PopoverController, private tweetService:TweetService) {
     this.tweets = []
@@ -33,11 +42,13 @@ export class HomePage {
       this.title = response.title;
       this.message = response.message;
       this.player = response.player;
+      this.chartData = response.chartData;
+      this.labels = response.labels;
     });
   }
 
   openSearchBar(myEvent) {
-    let popover = this.popoverController.create(SearchMenu, {"tweets":this.tweets, "title":this.title, "message":this.message, "player":this.player})
+    let popover = this.popoverController.create(SearchMenu, {"tweets":this.tweets, "title":this.title, "message":this.message, "player":this.player, "chartData":this.chartData, "labels":this.labels, "values":this.values})
     popover.present({
       ev: myEvent
     })
@@ -46,11 +57,39 @@ export class HomePage {
       this.title = data.title;
       this.message = data.message;
       this.player = data.player;
+      this.chartData = data.chartData;
+      this.labels = data.labels;
+      this.values = this.values;
+
+      this.lineChart = new Chart(this.lineCanvas.nativeElement, {
+
+        type: 'line',
+        data: {
+          labels: this.labels,
+          datasets: [{
+            label: 'No. of tweets',
+            data: this.chartData,
+            backgroundColor: "rgba(153,255,51,0.4)"
+          }]
+        },
+        options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+        }
+      });
+
+
       if(this.tweets.length > 0 ){
         this.tweetsAvailable = true
       } else {
         this.tweetsAvailable = false
       }
+
     });
   }
 

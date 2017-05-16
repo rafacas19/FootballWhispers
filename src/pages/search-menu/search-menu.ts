@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { TweetService } from '../../app/services/tweets.service'
+
 // import { Http } from '@angular/http';
 
 @Component({
@@ -9,12 +10,17 @@ import { TweetService } from '../../app/services/tweets.service'
   providers: [TweetService]
 })
 export class SearchMenu {
+  
+
   tweets:any;
   title:any;
   message:any;
   optional1:string;
   optional2:string;
   player:any;
+  chartData:any;
+  labels:any;
+  values:any;
 
 
   constructor(public viewCtrl: ViewController, private tweetService: TweetService, private params:NavParams) {
@@ -38,8 +44,12 @@ export class SearchMenu {
           this.tweets = response["tweets"];
           this.title = response["title"];
           this.message = response["message"];
-          this.player = response["player_info"]
-          this.viewCtrl.dismiss({"tweets":this.tweets, "title":this.title, "message":this.message, "player":this.player});
+          this.player = response["player_info"];
+          this.chartData = response["chartData1"];
+          this.labels = response["labels"];
+          this.values = response["values"];
+
+          this.viewCtrl.dismiss({"tweets":this.tweets, "title":this.title, "message":this.message, "player":this.player, "chartData":this.chartData, "labels":this.labels, "values":this.values});
       }).catch(error => {
         console.log("Promise Rejected")
       });
