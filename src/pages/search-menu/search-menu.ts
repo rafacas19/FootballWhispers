@@ -33,7 +33,7 @@ export class SearchMenu {
     this.player = params.data.player;
     this.logic1 = "and";
     this.logic2 = "and";
-    this.search_type = "api";
+    this.search_type = "query_all";
   }
 
   close() {
@@ -44,9 +44,9 @@ export class SearchMenu {
   getTweets(value: {player: string, team: string, user: string}) {
     console.log(this.optional1);
     console.log(this.optional2);
-    this.tweetService.getPosts(this.trimInput(value.player), this.trimInput(value.team), this.trimInput(value.user), "query_all", this.optional1, this.optional2)
+    this.tweetService.getPosts(this.trimInput(value.player), this.trimInput(value.team), this.trimInput(value.user), this.search_type, this.optional1, this.optional2)
       .then(response => {
-        console.log(response["player_info"].birth_date);
+        // console.log(response["player_info"].birth_date);
           this.tweets = response["tweets"];
           this.title = response["title"];
           this.message = response["message"];

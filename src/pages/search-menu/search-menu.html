@@ -9,6 +9,14 @@
   <form (ngSubmit)="getTweets(f.value)" #f="ngForm">
 
     <ion-item>
+      <ion-label color="primary">Search Type</ion-label>
+      <ion-select interface="popover" [(ngModel)]="search_type"  (ionChange)="changeSelectType(searchMethod)" name="searchMethod">
+        <ion-option value="query_all">API Only</ion-option>
+        <ion-option value="query_db">Database Only</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
       <ion-label color="primary">Player</ion-label>
       <ion-input name="player" placeholder="Player Name or Account" ngModel></ion-input>
     </ion-item>
@@ -39,14 +47,6 @@
     <ion-item>
       <ion-label color="primary">User</ion-label>
       <ion-input name="user" placeholder="Username" ngModel></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label color="primary">Search Type</ion-label>
-      <ion-select interface="popover" [(ngModel)]="search_type"  (ionChange)="changeSelectType(searchMethod)" name="searchMethod">
-        <ion-option value="api">API</ion-option>
-        <ion-option value="db">Database</ion-option>
-      </ion-select>
     </ion-item>
 
     <button ion-button block type="submit">Search</button>
