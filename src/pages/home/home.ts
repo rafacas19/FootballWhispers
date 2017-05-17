@@ -73,14 +73,15 @@ export class HomePage {
         this.playerAvailable = false
       }
 
-      /*this.lineChart = new Chart(this.lineCanvas.nativeElement, {
-
+      console.log(this.chartData);
+      console.log(this.labels)
+      this.lineChart = new Chart(this.lineCanvas.nativeElement, {
         type: 'line',
         data: {
-          labels: this.labels,
+          labels: [this.labels],
           datasets: [{
             label: 'No. of tweets',
-            data: this.chartData,
+            data: [this.chartData],
             backgroundColor: "rgba(153,255,51,0.4)"
           }]
         },
@@ -93,7 +94,7 @@ export class HomePage {
           }]
         }
         }
-      }); */
+      });
     });
   }
 
