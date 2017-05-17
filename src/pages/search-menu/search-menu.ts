@@ -20,7 +20,6 @@ export class SearchMenu {
   player:any;
   chartData:any;
   labels:any;
-  values:any;
   logic1:string;
   logic2:string;
   search_type:string;
@@ -53,9 +52,8 @@ export class SearchMenu {
           this.player = response["player_info"];
           this.chartData = response["chartData1"];
           this.labels = response["labels"];
-          this.values = response["values"];
 
-          this.viewCtrl.dismiss({"tweets":this.tweets, "title":this.title, "message":this.message, "player":this.player, "chartData":this.chartData, "labels":this.labels, "values":this.values});
+          this.viewCtrl.dismiss({"tweets":this.tweets, "title":this.title, "message":this.message, "player":this.player, "chartData":this.chartData, "labels":this.labels});
       }).catch(error => {
         console.log("Promise Rejected")
       });

@@ -61,7 +61,7 @@ export class HomePage {
       this.player = data.player;
       this.chartData = data.chartData;
       this.labels = data.labels;
-      this.values = this.values;
+
       if(this.tweets.length > 0 ){
         this.tweetsAvailable = true
       } else {
@@ -73,15 +73,23 @@ export class HomePage {
         this.playerAvailable = false
       }
 
-      console.log(this.chartData);
-      console.log(this.labels)
+      //Format labels from JSON string to array of individual strings
+      var labelsNoBrackets = this.labels.replace("[", "");
+      labelsNoBrackets = labelsNoBrackets.replace("]", "");
+
+      var labelNBSplit = labelsNoBrackets.split(",");
+      
+      var labelArray = JSON.parse("[" + labelNBSplit + "]");
+
+
+
       this.lineChart = new Chart(this.lineCanvas.nativeElement, {
         type: 'line',
         data: {
-          labels: [this.labels],
+          labels: labelArray,
           datasets: [{
             label: 'No. of tweets',
-            data: [this.chartData],
+            data: this.chartData,
             backgroundColor: "rgba(153,255,51,0.4)"
           }]
         },
