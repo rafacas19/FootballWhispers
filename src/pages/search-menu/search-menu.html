@@ -16,7 +16,7 @@
 
     <ion-item>
       <ion-label color="primary">Search Type</ion-label>
-      <ion-select [(ngModel)]="logic1"  (ionChange)="changeSelect(logic1)" name="logic1">
+      <ion-select interface="popover" [(ngModel)]="logic1"  (ionChange)="changeSelect(logic1)" name="logic1">
         <ion-option value="and" selected="true">AND</ion-option>
         <ion-option value="or">OR</ion-option>
       </ion-select>
@@ -30,7 +30,7 @@
 
     <ion-item>
       <ion-label color="primary">Search Type</ion-label>
-      <ion-select [(ngModel)]="logic2"  (ionChange)="changeSelect2(logic2)" name="logic2">
+      <ion-select interface="popover" [(ngModel)]="logic2"  (ionChange)="changeSelect2(logic2)" name="logic2">
         <ion-option value="and" selected="true">AND</ion-option>
         <ion-option value="or">OR</ion-option>
       </ion-select>

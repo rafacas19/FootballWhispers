@@ -21,6 +21,8 @@ export class SearchMenu {
   chartData:any;
   labels:any;
   values:any;
+  logic1:string;
+  logic2:string;
 
 
   constructor(public viewCtrl: ViewController, private tweetService: TweetService, private params:NavParams) {
@@ -28,6 +30,8 @@ export class SearchMenu {
     this.title = params.data.title;
     this.message = params.data.message;
     this.player = params.data.player;
+    this.logic1 = "and";
+    this.logic2 = "and";
   }
 
   close() {
