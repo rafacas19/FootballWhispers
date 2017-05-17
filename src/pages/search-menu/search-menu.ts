@@ -23,6 +23,7 @@ export class SearchMenu {
   values:any;
   logic1:string;
   logic2:string;
+  search_type:string;
 
 
   constructor(public viewCtrl: ViewController, private tweetService: TweetService, private params:NavParams) {
@@ -32,6 +33,7 @@ export class SearchMenu {
     this.player = params.data.player;
     this.logic1 = "and";
     this.logic2 = "and";
+    this.search_type = "api";
   }
 
   close() {
@@ -79,6 +81,10 @@ export class SearchMenu {
 
   changeSelect2(logic2) {
     this.optional2 = logic2;
+  }
+
+  changeSelectType(searchMethod) {
+
   }
 
   trimInput(value) {
