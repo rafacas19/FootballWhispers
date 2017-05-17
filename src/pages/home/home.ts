@@ -50,10 +50,25 @@ export class HomePage {
   }
 
   openSearchBar(myEvent) {
-    let popover = this.popoverController.create(SearchMenu, {"tweets":this.tweets, "title":this.title, "message":this.message, "player":this.player, "chartData":this.chartData, "labels":this.labels, "values":this.values})
+    let popover = this.popoverController.create(SearchMenu,
+        {
+          "tweets":this.tweets,
+          "title":this.title,
+          "message":this.message,
+          "player":this.player,
+          "chartData":this.chartData,
+          "labels":this.labels,
+          "values":this.values
+        },{
+          enableBackdropDismiss:false
+      }
+    );
+
     popover.present({
-      ev: myEvent
+      ev: myEvent,
     })
+
+
     popover.onDidDismiss((data) => {
       this.tweets = data.tweets;
       this.title = data.title;
@@ -67,7 +82,7 @@ export class HomePage {
       } else {
         this.tweetsAvailable = false
       }
-      if(this.player.name) {
+      if(this.player && this.player.name) {
         this.playerAvailable = true
       } else {
         this.playerAvailable = false
