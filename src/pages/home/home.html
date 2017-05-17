@@ -71,6 +71,15 @@
     <div *ngSwitchCase="'graph'">
       <div *ngIf="tweetsAvailable">
         <h3>Request Try</h3>
+        <ion-card>
+          <ion-card-header>
+            No. of related tweets over time
+          </ion-card-header>
+          <ion-card-content>
+            <canvas #lineCanvas></canvas>
+          </ion-card-content>
+        </ion-card>
+
 
       </div>
       <div *ngIf="!tweetsAvailable">
@@ -95,15 +104,8 @@
 
     </div>
   </div>
-  <ion-card>
-    <ion-card-header>
-      No. of related tweets over time
-    </ion-card-header>
-    <ion-card-content>
-      <canvas #lineCanvas></canvas>
-    </ion-card-content>
-  </ion-card>
-</ion-content>
+
 <!--
 
 -->
+</ion-content>

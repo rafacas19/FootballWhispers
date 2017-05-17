@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ContentChildren, QueryList } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { PopoverController } from 'ionic-angular';
 import { SearchMenu } from '../search-menu/search-menu';
@@ -88,36 +88,40 @@ export class HomePage {
         this.playerAvailable = false
       }
 
-      //Format labels from JSON string to array of individual strings
-      var labelsNoBrackets = this.labels.replace("[", "");
-      labelsNoBrackets = labelsNoBrackets.replace("]", "");
 
-      var labelNBSplit = labelsNoBrackets.split(",");
-      
-      var labelArray = JSON.parse("[" + labelNBSplit + "]");
+    });
+  }
+
+  ngAfterInit() {
+    //Format labels from JSON string to array of individual strings
+    var labelsNoBrackets = this.labels.replace("[", "");
+    labelsNoBrackets = labelsNoBrackets.replace("]", "");
+
+    var labelNBSplit = labelsNoBrackets.split(",");
+
+    var labelArray = JSON.parse("[" + labelNBSplit + "]");
 
 
 
-      this.lineChart = new Chart(this.lineCanvas.nativeElement, {
-        type: 'line',
-        data: {
-          labels: labelArray,
-          datasets: [{
-            label: 'No. of tweets',
-            data: this.chartData,
-            backgroundColor: "rgba(153,255,51,0.4)"
-          }]
-        },
-        options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-        }
-      });
+    this.lineChart = new Chart(this.lineCanvas.nativeElement, {
+      type: 'line',
+      data: {
+        labels: labelArray,
+        datasets: [{
+          label: 'No. of tweets',
+          data: this.chartData,
+          backgroundColor: "rgba(153,255,51,0.4)"
+        }]
+      },
+      options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+      }
     });
   }
 
