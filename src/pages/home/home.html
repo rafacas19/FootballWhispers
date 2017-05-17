@@ -80,7 +80,7 @@
     </div>
 
     <div *ngSwitchCase="'player'">
-      <div *ngIf="tweetsAvailable">
+      <div *ngIf="playerAvailable">
         <h1>{{player.name}}</h1>
         <h3>Club: {{player.club}}</h3>
         <h3>Place of Birth: {{player.birth_place}}</h3>
@@ -89,8 +89,8 @@
         <h3>Description: </h3>
         <p>{{player.description}}</p>
       </div>
-      <div *ngIf="!tweetsAvailable">
-        <h2>{{message}}</h2>
+      <div *ngIf="!playerAvailable">
+        <h2>No Player found</h2>
       </div>
 
     </div>

@@ -10,7 +10,7 @@ import { TweetService } from '../../app/services/tweets.service'
   providers: [TweetService]
 })
 export class SearchMenu {
-  
+
 
   tweets:any;
   title:any;

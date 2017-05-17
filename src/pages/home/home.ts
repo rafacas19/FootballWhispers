@@ -15,6 +15,7 @@ export class HomePage {
   @ViewChild('lineCanvas') lineCanvas;
 
   tweetsAvailable:boolean;
+  playerAvailable:boolean;
   tweets:any;
   title:any;
   message:any;
@@ -30,6 +31,7 @@ export class HomePage {
     this.message = "No message yet";
     this.player = "No player selected";
     this.tweetsAvailable = false;
+    this.playerAvailable = false;
   }
 
   ngOnInit() {
@@ -60,6 +62,16 @@ export class HomePage {
       this.chartData = data.chartData;
       this.labels = data.labels;
       this.values = this.values;
+      if(this.tweets.length > 0 ){
+        this.tweetsAvailable = true
+      } else {
+        this.tweetsAvailable = false
+      }
+      if(this.player.name) {
+        this.playerAvailable = true
+      } else {
+        this.playerAvailable = false
+      }
 
       /*this.lineChart = new Chart(this.lineCanvas.nativeElement, {
 
@@ -82,14 +94,6 @@ export class HomePage {
         }
         }
       }); */
-
-
-      if(this.tweets.length > 0 ){
-        this.tweetsAvailable = true
-      } else {
-        this.tweetsAvailable = false
-      }
-
     });
   }
 
